@@ -1,1 +1,6 @@
-
+print("Glo Academy")
+print("")
+print("Glo Academy")
+print("")
+print("")
+print("Glo Academy", " ", "Glo Academy", sep="\n")
