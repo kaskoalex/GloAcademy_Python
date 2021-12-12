@@ -1,1 +1,20 @@
+from math import ceil, floor
 
+a = int(input())
+b = int(input())
+c = int(input())
+
+
+x = b / 100
+price = (a + x) * c
+e=floor(price)
+d = int(price - e)
+
+
+print("За ", end="")
+print(c, end="")
+print(" мяча нужно заплатить ", end="")
+print(e, end="")
+print(" рублей и ", end="")
+print(d)
+print(" копеек. ")
