@@ -1,0 +1,15 @@
+from math import floor
+a = int(input())
+
+h = floor ( a / 3600 )
+h2 = (a - h * 3600) // 60
+h3 = a % 360
+
+print(a, end="")
+print(" секунд-это  ", end="")
+print(h, end="")
+print(" часа ", end="")
+print(h2, end="")
+print(" минут ", end="")
+print(h3, end="")
+print(" сек ")
