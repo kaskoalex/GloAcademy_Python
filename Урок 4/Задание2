@@ -1,5 +1,5 @@
-b = int(input())
-c = int(input())
+b = float(input())
+c = float(input())
 print(b, end="")
 print(" умноженное на ", end="")
 print(c, end="")
