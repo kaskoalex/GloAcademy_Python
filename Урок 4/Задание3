@@ -1,0 +1,6 @@
+print("введите трёхзначное положытельное число")
+b = int(input())
+var1 = b // 100
+var2 = b // 10 % 10
+var3 = b % 10
+print(var1 + var2 + var3)
