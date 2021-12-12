@@ -1,1 +1,33 @@
+b = int(input())
+c = int(input())
+print(b, end="")
+print(" умноженное на ", end="")
+print(c, end="")
+print(" равно ", end="")
+print(b * c)
 
+print(b, end="")
+print(" делённое на ", end="")
+print(c, end="")
+print(" равно ", end="")
+print(b / c)
+
+print(b, end="")
+print(" нацело делённое на ", end="")
+print(c, end="")
+print(" равно ", end="")
+print(b // c)
+
+
+print(" остаток от деления ", end="")
+print(b, end="")
+print(" на ", end="")
+print(c, end="")
+print(" равно ", end="")
+print(b % c)
+
+print(b, end="")
+print(" в степени ", end="")
+print(c, end="")
+print(" равно ", end="")
+print(b ** c)
