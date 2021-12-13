@@ -4,7 +4,7 @@ if w == 0:
     print("зеленый")
 elif 36 < w < 0:
     print("«ошибка ввода»")
-elif (10 < w < 19 or 28 < w < 37 and w % 2 > 0) or (0 < w < 11 or 18 < w < 29 and w % 2 == 0):
+elif ((10 < w < 19 or 28 < w < 37) and w % 2 > 0) or ((0 < w < 11 or 18 < w < 29) and w % 2 == 0):
     print("черный")
 else:
     print("красный")
