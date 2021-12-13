@@ -2,7 +2,9 @@ print("Введите номер кармана: ")
 w = int(input())
 if w == 0:
     print("зеленый")
-elif (11 <= w <= 18 and w % 2 > 0) or (19 <= w <= 28 and w % 2 == 0) or (29 <= w <= 36 and w % 2 > 0):
+elif 36 < w < 0:
+    print("«ошибка ввода»")
+elif (10 < w < 19 or 28 < w < 37 and w % 2 > 0) or (0 < w < 11 or 18 < w < 29 and w % 2 == 0):
     print("черный")
 else:
     print("красный")
