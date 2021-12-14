@@ -1,0 +1,17 @@
+print("Введите первый текст: ")
+a = (input())
+a1=len(a)
+print("Введите второй текст: ")
+b = (input())
+b1 = len(b)
+print("Введите третий текст: ")
+c = (input())
+c1 = len(c)
+
+
+if a1 > b1 and b1 > c1:
+    print(a)
+elif b1 > a1 and a1 > c1:
+    print(b)
+else:
+    print(c)
