@@ -1,0 +1,8 @@
+total = 0
+print("Введите натуральное число: ",end=" ")
+
+for i in range(int(input()) + 1):
+    if i % 10 == 1 or i % 10 == 3 or i % 10 == 7:
+        total = total + i
+        
+print(total)
