@@ -1,0 +1,19 @@
+print("Введите первое число: ", end=" ")
+a = int(input())
+print("Введите второе число: ", end=" ")
+b = int(input(),)
+print('')
+if a < b:
+    if a % 2 == 0:
+        for i in range(a, b + 1, 2):
+            print(i)
+    else:
+        for i in range(a + 1, b + 1, 2):
+            print(i)        
+if b < a:
+    if a % 2 == 0:
+        for i in range(b, a + 1, 2):
+            print(i)
+    else:
+        for i in range(b + 1, a + 1, 2):
+            print(i)
