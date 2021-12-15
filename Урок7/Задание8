@@ -1,0 +1,14 @@
+
+print("Введите натуральное число: ",end=" ")
+a = int(input())
+b = int(input())
+maximum = b
+minimum = b
+for i in range(a - 1):
+    number=int(input())
+    if number > maximum:
+        maximum = number
+    elif number < minimum:
+        minimum = number
+print("Минимум равен", minimum)
+print("Максимум равен", maximum)
