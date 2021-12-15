@@ -1,0 +1,12 @@
+counter = 0
+print("Введите натуральное число:")
+a = int(input())
+for i in range(a):
+    number=int(input())
+    if number % 2 != 0:
+        counter = counter + 1
+
+if counter == a:
+    print("YES")
+else:
+    print("NO")
