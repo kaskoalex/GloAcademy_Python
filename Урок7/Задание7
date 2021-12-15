@@ -1,0 +1,10 @@
+total = 1
+print("Введите натуральное число: ",end=" ")
+a = int(input())
+if a == 1:
+    print(0)
+else:
+    for i in range(a + 1):
+        if i % 10 == 2 or i % 10 == 9:
+            total = total * i
+    print(total)
