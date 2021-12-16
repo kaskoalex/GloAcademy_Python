@@ -1,0 +1,9 @@
+print("Введите натуральное число:")
+counter = 0
+number = int(input())
+while number > 0:
+        if number % 10 == 5:
+                counter += 1
+        number = number // 10
+
+print(counter)
