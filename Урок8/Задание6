@@ -7,4 +7,4 @@ while a != 0:
    
     a = int(input())
     
-print(int(s / p))
+print(s / p)
