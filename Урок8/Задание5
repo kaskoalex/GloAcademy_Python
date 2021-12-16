@@ -1,0 +1,14 @@
+print("Введите целое число:")
+num = int(input())
+
+h = num // 3600
+if h > 0:
+    m = (num // 60 - h * 60)
+else:
+    m = num // 60
+if m > 0:
+    s = num - h * 3600 - m * 60
+else:
+    s = num
+
+print(num, " секунд-это ", h, " часов ", m, " минут ", s, " секунд")
