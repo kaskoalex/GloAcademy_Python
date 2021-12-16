@@ -1,0 +1,21 @@
+Это по теме Урока:
+print("Введите натуральное число:")
+number = int(input())
+maximum = 0
+minimum = 9
+while number != 0:
+    b = number % 10
+    if b > maximum:
+        maximum = b
+    if b < minimum:
+        minimum = b
+    number //= 10
+
+print("Максимальная цифра равна ", maximum)
+print("Минимальная цифра равна", minimum)
+
+А так проще.
+
+a = (input())
+print(min(a))
+print(max(a))
