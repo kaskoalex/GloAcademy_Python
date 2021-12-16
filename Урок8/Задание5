@@ -1,0 +1,11 @@
+a = int(input())
+minus = 0
+plus = 0
+while a != 0:
+    if a > 0:
+        plus += 1
+    elif a < 0:
+        minus += 1
+    a = int(input())
+    
+print(minus*plus)
