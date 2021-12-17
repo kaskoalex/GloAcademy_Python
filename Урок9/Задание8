@@ -1,0 +1,8 @@
+print("Введите натуральное число:")
+flag = 0
+a = int(input())
+for i in range(a + 1):
+    if i % 10 == 5:
+        flag = flag + 1
+
+print(flag)
