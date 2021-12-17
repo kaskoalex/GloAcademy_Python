@@ -1,0 +1,5 @@
+print("Введите натуральное число:")
+if "1" in str(input()):
+    print("YES")
+else:
+    print("NO")
