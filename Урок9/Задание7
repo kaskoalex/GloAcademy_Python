@@ -1,3 +1,11 @@
+for h in range(3):
+    for m in range(60):
+        for s in range(60):
+            print(h, ':', m, ':', s)
+            
+            
+
+
 print("Введите натуральное число:")
 a = int(input())
 h = a // 3600
