@@ -1,1 +1,8 @@
 
+s=input()
+print(s)
+
+for i in range(len(s)):
+  if (s[i]).isdigit():
+     True
+     print(s[i],end="")
