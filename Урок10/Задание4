@@ -1,9 +1,16 @@
 p=input()
 s=ord(p)
-print(s)
 if s > 64 and s < 91:
   print(p.lower())
 if  s > 96 and s < 123:  
   print(p.upper())
+else:
+  print (p) 
+  
+  #или
+p=input()
+s=ord(p)
+if (s > 64 and s < 91) or (s > 96 and s < 123):
+  print(p.swapcase())
 else:
   print (p) 
