@@ -1,1 +1,3 @@
-
+f=input()
+u=f.count(chr(32))
+print((f.count(chr(32))+1))
