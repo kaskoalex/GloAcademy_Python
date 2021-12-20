@@ -1,0 +1,7 @@
+f=input()
+print(len(f))
+print(f[(len(f)-1)])
+print(f[0:2])
+print(f[-2:len(f)])
+print(f[::-1])
+print(f[0]," ",f[1:(len(f)-1)]," ",f[(len(f)-1)])
