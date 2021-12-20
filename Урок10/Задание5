@@ -1,0 +1,10 @@
+p=ord(input())
+c=ord(input())
+b = c + 1
+e = p + 1
+if p<c:
+  for i in range(p,b):
+    print(chr(i))    
+else:
+  for i in range(c,e):
+    print(chr(i))
