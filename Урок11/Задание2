@@ -1,0 +1,5 @@
+s = input()
+block = s.split("/")
+print(block)
+for i in range(len(block)):
+    print(block[i])
