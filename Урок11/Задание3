@@ -1,1 +1,11 @@
-
+print("Введите IP адресс")
+adress = input()
+block = adress.split(".")
+flag = 0
+for i in range(3):
+    if (int(block[i]) < 0) or (int(block[i]) > 255):
+        flag = flag + 1
+if flag > 0:
+    print("NO")
+else:
+    print("YES")
