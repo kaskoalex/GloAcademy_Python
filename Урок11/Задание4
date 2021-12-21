@@ -1,7 +1,6 @@
 print("Введите строку натуральных чисел")
 number = input()
 block = number.split( )
-print(block)
 flag = 0
 for k in range(len(block)):
     for i in range(1 + k, len(block)):
