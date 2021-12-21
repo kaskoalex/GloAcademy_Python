@@ -1,1 +1,9 @@
-
+print("Введите строку натуральных чисел")
+number = input()
+block = number.split( )
+for k in range(len(block)):
+    for i in range(len(block)):
+        if block[k] == block[i] and k != i:
+            break
+    else:
+        print(block[k], end=" ")
