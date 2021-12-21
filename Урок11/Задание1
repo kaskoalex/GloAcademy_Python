@@ -1,0 +1,12 @@
+print("Введите натуральное число:")
+number = int(input())
+block = []
+for i in range(number):
+     print("Введите строку:", "var", i + 1)
+     block.append(input())
+print("Введите запрос:")
+str = input()
+
+for i in range(number):
+     if (block[i]).find(str) >= 0:
+          print("В этом слове найден ваш запрос:", block[i])
