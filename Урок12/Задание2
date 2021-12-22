@@ -1,0 +1,15 @@
+def max_number(string):
+    block = string.split()
+    block = [int(i) for i in block]
+    number = max(block)
+    return number
+
+
+print("Введите строку натуральных чисел")
+string1 = input()
+print("Введите строку натуральных чисел")
+string2 = input()
+
+num1 = max_number(string1)
+num2 = max_number(string2)
+print(num1 * num2)
