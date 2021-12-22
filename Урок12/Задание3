@@ -1,0 +1,11 @@
+def number_month(number):
+
+    if int(number) == 2:
+        daynum = 28
+    elif number in (4, 6, 9, 11):
+        daynum = 30
+    else:
+        daynum = 31
+    return daynum
+number = int(input())
+print(number_month(number))
