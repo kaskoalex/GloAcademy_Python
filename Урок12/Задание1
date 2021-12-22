@@ -1,0 +1,7 @@
+print("Введите натуральное число:")
+number = (input())
+print("Введите ещё одно натуральное число:")
+number2 = (input())
+a = len(number)
+b = len(number2)
+print(a*b)
