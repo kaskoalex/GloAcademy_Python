@@ -1,0 +1,7 @@
+price1 = 100
+price2 = 50
+def total_pric(crowd):
+        price = 100 + (int(crowd) - 1) * 50
+        return price
+crowd = input()
+print(total_pric(crowd))
