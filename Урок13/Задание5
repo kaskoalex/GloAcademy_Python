@@ -1,0 +1,25 @@
+print("Введите максимальный предел угадываемого числа")
+max_number = int(input())
+print("Введите угадываемое число")
+secret_number = int(input())
+beg = 0
+end = max_number
+while True:
+
+    number3 = end - (end - beg) // 2
+
+
+
+    
+    if secret_number > number3:
+        beg = end - (end - beg) // 2
+        number3 = beg
+
+
+    elif secret_number < number3:
+        end = beg + (end - beg) // 2
+        number3 = end
+
+    else:
+        print("Число", number3)
+        break
