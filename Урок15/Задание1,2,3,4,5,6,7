@@ -103,4 +103,5 @@ while True:
         print(user_word)
 
     print('Ура, вы угадали слово!')
+    flag=0
     continue
