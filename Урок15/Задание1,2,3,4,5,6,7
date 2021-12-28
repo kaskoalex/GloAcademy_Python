@@ -37,10 +37,30 @@ print('Напишите вопрос, ответом на который явл�
 question = input()
 # вызшее учебное заведение
 
+user_word_number_letters = len(hidden_word) * "*
+
+
+def update_user_word(secret_word, user_word, char):
+    new_user_word = ''
+    for i in range(len(secret_word)):
+        if secret_word[i] == char:
+            new_user_word += char
+        else:
+            new_user_word += user_word[i]
+
+    return new_user_word
+
+user_char_number = [""]
+print('Напишите слово, которое нужно угадать')
+hidden_word = input()
+# академия
+
+print('Напишите вопрос, ответом на который является загаданное слово')
+question = input()
+# вызшее учебное заведение
+
 user_word_number_letters = len(hidden_word) * "*"
 
-print('Укажите количество попыток')
-number = int(input())
 
 
 def update_user_word(secret_word, user_word, char):
@@ -64,7 +84,7 @@ while True:
 
     while user_word != secret_word:
 
-        print('У вас осталось ', (number-flag), ' попыток. Введите букву.')
+
         S = input()
         user_char = S.lower()
         flag = flag + 1
@@ -86,9 +106,7 @@ while True:
             print('Вводите пожалуйста буквы русского алфавита.')
             flag -= 1
             continue
-        if flag >= number:
-            print('Ваше количество попыток использовано, начинаем с начала!')
-            continue
+        
 
         new_user_word = update_user_word(secret_word, user_word, user_char)
 
@@ -102,6 +120,6 @@ while True:
         user_word = new_user_word
         print(user_word)
 
-    print('Ура, вы угадали слово!')
+    print('Ура, вы угадали слово!Вам понадобилось ', flag, ' попыток.')
     flag=0
     continue
