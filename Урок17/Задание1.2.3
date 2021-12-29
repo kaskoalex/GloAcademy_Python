@@ -1,0 +1,84 @@
+# 1.Загадать 4 различные цифры.
+# 2.Повторить безконечно
+#     1. Выводим "Найдите число задуманное компьютереом."
+#     2. Получаем число от пользователя
+#     3. Считаем количество быков.
+#     4. Считаем количество коров.
+#     5. Выводим пользователю.
+#     6. Если количество быков равно 4 тогда победа.
+# Задание 1
+# Добавьте возможность повтора игры без перезапуска приложения
+# Задание 2
+# Сделайте “защиту от дурака”. Проверяйте, чтобы введенная строка соответствовала правилам:
+
+# 1. Состоит из десятичных цифр
+
+# 2. Длина строки равна длине загаданного слова
+
+# 3. Состоит из уникальных цифр
+#
+#
+
+import random
+
+def generate_secret_word():
+    digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    secret_word = ''
+    for i in range(4):
+        random_index = random.randint(0, len(digits) - 1)
+        secret_word += str(digits[random_index])
+        digits.pop(random_index)
+
+    return secret_word
+
+def calculate_bulls_count(user_word, secret_word):
+    counter = 0
+    for i in range(len(secret_word)):
+        if secret_word[i] == user_word[i]:
+            counter += 1
+
+    return counter
+
+
+def calculate_cows_count(user_word, secret_word):
+    counter = 0
+    for i in range(len(user_word)):
+        if secret_word[i] != user_word[i] and user_word[i] in secret_word:
+            counter += 1
+
+    return counter
+
+def user_word_ord(user_word):
+    for i in range(len(user_word)):
+        if ord(user_word[i]) < 58 and ord(user_word[i]) > 47:
+            True
+        else:
+            print('Вводите пожалуйста цифры.')
+            break
+ 
+            
+while True:
+    secret_word = generate_secret_word()
+
+    
+
+    while True:
+        print('Найдите число задуманное компьютереом.')
+        user_word = input()
+        user_word_ord(user_word)
+        if len(user_word) != len(secret_word):
+            print('Вводите пожалуйста четыре цифры.')
+            break
+        if user_word[0] != user_word[1] != user_word[2] != user_word[3]:
+            True
+        else:
+            print('Вводите пожалуйста разные цифры.')
+            break        
+        bulls_count = calculate_bulls_count(user_word, secret_word)
+        cows_count = calculate_cows_count(user_word, secret_word)
+
+        print(bulls_count, 'быков', cows_count, "коров.")
+
+        if bulls_count == 4:
+            print('Ура! Ты победил!')
+            break
