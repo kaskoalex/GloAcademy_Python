@@ -55,6 +55,15 @@ def user_word_ord(user_word):
         else:
             print('Вводите пожалуйста цифры.')
             break
+        
+def user_word_char(user_word):
+    for i in range(len(user_word)):
+        for j in range(i + 1, len(user_word)):
+            if user_word[i] == user_word[j]:
+
+                return False
+
+
  
             
 while True:
@@ -66,14 +75,15 @@ while True:
         print('Найдите число задуманное компьютереом.')
         user_word = input()
         user_word_ord(user_word)
+        if user_word_char(user_word) == False:
+            print("есть одинаковые числа")
+            break
+            
+             
         if len(user_word) != len(secret_word):
             print('Вводите пожалуйста четыре цифры.')
             break
-        if user_word[0] != user_word[1] != user_word[2] != user_word[3]:
-            True
-        else:
-            print('Вводите пожалуйста разные цифры.')
-            break        
+               
         bulls_count = calculate_bulls_count(user_word, secret_word)
         cows_count = calculate_cows_count(user_word, secret_word)
 
