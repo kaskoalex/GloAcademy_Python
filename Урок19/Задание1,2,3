@@ -4,22 +4,40 @@ questions = ['Сколько будет два плюс два умножено�
             'Бревно нужно распилить на десять частей, сколько нужно  распилов?',
             'На двух руках 10 пальцев, сколько пальцев на 5 руках?',
             'Укол делают каждые полчаса, сколько нужно минут для трёх уколов?',
+            'Пять свечей горело, две потухли. Сколько свечей осталось?',
+            'Укол делают каждые полчаса, сколько нужно минут для трёх уколов?',
             'Пять свечей горело, две потухли. Сколько свечей осталось?']
 
 
 
-answers = [6, 9, 25, 60, 2]
+answers = [6, 9, 25, 60, 2, 60, 2]
 
 result = ['Идиот.', 'Кретин.', 'Дурак.', 'Нормальный.', 'Талант.', 'Гений.']
 
 count_right_answers = 0
+coefficient = len(questions) / len(answers)
 
 
-user_name = input('Напишите пожалуйста как вас зовут. Ваше имя?\n:')
+user_name = str(input('Напишите пожалуйста как вас зовут. Ваше имя?\n:'))
 
 
-def result_count_right_answers(count_right_answers):
-    return result[count_right_answers]
+def result_count_right_answers(count_right_answers_new):
+    k = count_right_answers
+    if k == 0:
+        n = 0
+    elif k > 0 and k <= coefficient:
+        n = 1
+    elif k > coefficient and k <= coefficient * 2:
+        n = 2
+    elif k > coefficient*2 and k <= coefficient * 3:
+        n = 3
+    elif k > coefficient * 3 and k <= coefficient * 4:
+        n = 4
+    else:
+        n = 5
+    count_right_answers_new = n
+
+    return result[count_right_answers_new]
 
 def question_namber(new_order_questions, questions, i):
 
@@ -64,7 +82,7 @@ while True:
     print(f'Количество правильных ответов = {count_right_answers}. Да вы {user_name} просто {result_count_right_answers(count_right_answers)}')
 
     file = open('data.txt', 'a')
-    file.write(f' {user_name:1} {count_right_answers:1}')
+    file.write(f' {user_name:1} {count_right_answers:1} {result_count_right_answers(count_right_answers):1}')
 
     user_confirm = input('Вы хотите пройти тест еще раз? Да/Нет\n')
     if user_confirm.upper() == 'ДА':
@@ -80,11 +98,12 @@ print("Good bye")
 file = open('data.txt', 'r')
 line = file.read()
 line_list = line.split()
-name = 'Имя'
-answers = 'Количество правильных ответов'
-print(f'{name:15}{answers}')
+name = 'Имя.'
+answers = 'Правильных ответов.'
+res = 'Результат.'
+print(f'{name:15}{answers:25}{res}')
 n = 0
 while n < len(line_list):
-    print(f'{line_list[n]:15} {line_list[n + 1]}')
-    n += 2
+    print(f'{line_list[n]:15} {line_list[n + 1]:25}{line_list[n + 2]}')
+    n += 3
 file.close()
