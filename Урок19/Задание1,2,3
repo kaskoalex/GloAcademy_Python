@@ -15,7 +15,7 @@ answers = [6, 9, 25, 60, 2, 60, 2]
 result = ['Идиот.', 'Кретин.', 'Дурак.', 'Нормальный.', 'Талант.', 'Гений.']
 
 count_right_answers = 0
-coefficient = len(questions) / len(answers)
+coefficient = len(questions) / len(result)
 
 
 user_name = str(input('Напишите пожалуйста как вас зовут. Ваше имя?\n:'))
