@@ -1,0 +1,195 @@
+import random
+import os
+
+class FileProvider:
+    def get(self, path):
+        file = open(path, "r")
+        data = file.read()
+        file.close()
+        return data
+
+    def append(self, path, data):
+        file = open(path, "a")
+        data = file.write(data)
+        file.close()
+
+    def exists(self, path):
+        return os.path.exists(path)
+
+
+class QuestionsStorage:
+    def get_all(self):
+        questions = [Question('Сколько будет два плюс два умноженое на два?', 6),
+                     Question('Бревно нужно распилить на десять частей, сколько нужно  распилов?', 9),
+                     Question('На двух руках 10 пальцев, сколько пальцев на 5 руках?', 25),
+                     Question('Укол делают каждые полчаса, сколько нужно минут для трёх уколов?', 60),
+                     Question('Пять свечей горело, две потухли. Сколько свечей осталось?', 2)
+                     ]
+        return questions
+        
+
+class Question:
+    def __init__(self, text, answer):
+        self.text = text
+        self.answer = answer
+
+class User:
+    def __init__(self, name, count_right_answers=0, result='Результат'):
+        self.name = name
+        self.count_right_answers = count_right_answers
+        self.result = result
+    def accept_right_answer(self):
+        self.count_right_answers += 1
+    def set_result(self, result):
+        self.result = result
+
+class UserResultStorage:
+    def safe(self, user):
+
+        file_name = 'data.txt'
+        file_provider = FileProvider()
+        data = f' {user_name:1} {user.count_right_answers:1} {result_count_right_answers(user.count_right_answers):1}'
+
+        file_provider.append(file_name, data)        
+        
+
+        
+        
+        
+    def get_all(self):
+        file_name = 'data.txt'
+        file_provider = FileProvider()
+        data = file_provider.get(file_name)
+        data=data.split('\n')
+        users = []
+        
+
+        for line in data:
+
+            line_list = line.split()
+            n = 0
+            while n < len(line_list):
+                user = User(line_list[n], line_list[n + 1], line_list[n + 2])
+                users.append(user)
+                n += 3
+
+        return users
+
+
+result = ['Идиот.', 'Кретин.', 'Дурак.', 'Нормальный.', 'Талант.', 'Гений.']
+
+
+questionsStorage = QuestionsStorage()
+
+questions = questionsStorage.get_all()
+
+usersResultStorage = UserResultStorage()
+
+coefficient = len(questions) / len(result)
+
+
+
+
+user_name = str(input('Напишите пожалуйста как вас зовут. Ваше имя?\n:'))
+user=User(user_name)
+
+
+def result_count_right_answers(count_right_answers_new):
+    k = user.count_right_answers
+    if k == 0:
+        n = 0
+    elif k > 0 and k <= coefficient:
+        n = 1
+    elif k > coefficient and k <= coefficient * 2:
+        n = 2
+    elif k > coefficient*2 and k <= coefficient * 3:
+        n = 3
+    elif k > coefficient * 3 and k <= coefficient * 4:
+        n = 4
+    else:
+        n = 5
+    count_right_answers_new = n
+
+    return result[count_right_answers_new]
+
+def question_namber(new_order_questions, questions, i):
+
+    y = int(new_order_questions[i])    
+    print(f'Вопрос номер: {i + 1}\n{questions[y].text}')
+
+def new_order_question(questions):
+    symbols = [str(x) for x in range(len(questions))]
+    new_order_questions = ''
+    for k in range(len(symbols)):
+        random_index = random.randint(0, len(symbols) - 1)
+        new_order_questions += symbols[random_index]
+        symbols.pop(random_index)
+
+    return new_order_questions
+
+def show_user_results():
+    
+    name = 'Имя.'
+    answers = 'Правильных ответов.'
+    res = 'Результат.'
+    print(f'{name:15}{answers:25}{res}')
+
+    users = usersResultStorage.get_all()
+    for user in users:
+        print(f'{user.name:15} {user.count_right_answers:25}{user.result}')
+
+
+    return show_user_results
+    
+
+
+
+while True:
+
+    new_order_questions = new_order_question(questions)
+    
+    for i in range(len(questions)):
+        
+        
+        question_namber(new_order_questions, questions, i)
+        while True:
+            user_answer_input = input()
+
+            if user_answer_input.isdigit():
+                user_answer = int(user_answer_input)
+                right_answer = questions[(int(new_order_questions[i]))].answer
+                if user_answer == right_answer:
+                    user.accept_right_answer()
+
+                break
+
+            else:
+                print('Введите пожалуйста число')
+                continue
+
+
+        
+
+    print(f'Количество правильных ответов = {user.count_right_answers}. Да вы {user_name} просто {result_count_right_answers(user.count_right_answers)}')
+
+    user.set_result(result_count_right_answers(user.count_right_answers))
+
+
+
+
+    usersResultStorage.safe(user)
+
+    user_answer = input('Если хотите посмотреть ресултаты предыдущих игр, напищите "Да" ')
+    if user_answer.upper() == 'ДА':
+        show_user_results()    
+    
+
+    user_confirm=input('Вы хотите пройти тест еще раз? Да/Нет\n')
+    if user_confirm.upper() == 'ДА':
+        count_right_answers=0
+        continue
+    else:
+        break
+
+
+print("Good bye")
