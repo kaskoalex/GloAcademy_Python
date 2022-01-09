@@ -26,6 +26,98 @@ class QuestionsStorage:
                      Question('Пять свечей горело, две потухли. Сколько свечей осталось?', 2)
                      ]
         return questions
+
+    
+    def appendQuestions():
+        while True:
+            user_question_new = input('Вы хотите ввести новый вопрос? Да/Нет\n')
+            if user_question_new.upper() == 'ДА':
+                answers_new = 0
+                while answers_new == 0:
+                    answers_new_in = input('Введите вопрос: ')
+                    for i in range(0, len(answers_new_in)):
+                        if ord(answers_new_in[i]) < 1040 or ord(answers_new_in[i]) > 1103:
+                                print('Вводите пожалуйста буквы русского алфавита.')
+                                break
+        
+                        else:
+                            answers_new = answers_new_in
+        
+        
+        
+                    
+                while True:
+                    res_new_in = input('Введите ответ.Число: ')
+        
+                    if res_new_in.isdigit():
+                        res_new = res_new_in
+                        break
+        
+                    else:
+                        print('Введите пожалуйста число')
+                        continue         
+                   
+                    
+                Quest_new = Question(answers_new, res_new)
+                questions.append(Quest_new)
+                continue
+                
+            else:
+                break
+
+
+
+    def removeQuestion():
+        while True:
+            user_question_new = input('Вы хотите убрать  вопрос? Да/Нет\n')
+            if user_question_new.upper() == 'ДА':
+        
+                for n in range(len(questions)):
+                    print('Вопрос номмер:', n + 1, questions[n].text)
+        
+                while True:
+                    
+                    question_delet_in = input('Какой вопрос вопрос вы бы хотели убрать? Номер:')
+                    if question_delet_in.isdigit():
+                        question_delet = int(question_delet_in) - 1
+                        del questions[question_delet]
+                        break
+        
+                    else:
+                        print('Введите пожалуйста число')
+                        continue         
+        
+            else:
+                break
+
+                
+    def checkingDatabase():
+        file_name = 'quest.txt'
+        file_provider = FileProvider()
+        
+        if file_provider.exists(file_name):
+            file_name = 'quest.txt'
+            file_provider = FileProvider()
+            line = file_provider.get(file_name)
+        
+            line_list = line.split('#')
+            
+        
+            
+            questions = []
+            n = 0
+            while n + 1 < len(line_list):
+        
+        
+                Quest_new = Question(line_list[n], line_list[n + 1])
+                questions.append(Quest_new)
+                n += 2
+                
+            coefficient = len(questions) / len(result)        
+        
+
+    
+    
         
 
 class Question:
@@ -85,6 +177,11 @@ class QuestionsStorageData:
 
 # ------------------------------------------------------------
 
+
+
+
+
+        
 result = ['Идиот.', 'Кретин.', 'Дурак.', 'Нормальный.', 'Талант.', 'Гений.']
 
 
@@ -155,100 +252,19 @@ def show_user_results():
 # -----------В конце программы создаётся файл и потом туда добавляютса все вопросы.
 # ------------ При следующем запуске вопросы считываются уже с файла.-----------
 
-
-file_name = 'quest.txt'
-file_provider = FileProvider()
-
-if file_provider.exists(file_name):
-    file_name = 'quest.txt'
-    file_provider = FileProvider()
-    line = file_provider.get(file_name)
-
-    line_list = line.split('#')
-    
-
-    
-    questions = []
-    n = 0
-    while n + 1 < len(line_list):
-
-
-        Quest_new = Question(line_list[n], line_list[n + 1])
-        questions.append(Quest_new)
-        n += 2
-        
-    coefficient = len(questions) / len(result)
-    
-
-
-
+QuestionsStorage.checkingDatabase()
     
 # --------------------------------------------------------------------
 #--- Ввод вопроса---###
 
-while True:
-    user_question_new = input('Вы хотите ввести новый вопрос? Да/Нет\n')
-    if user_question_new.upper() == 'ДА':
-        answers_new = 0
-        while answers_new == 0:
-            answers_new_in = input('Введите вопрос: ')
-            for i in range(0, len(answers_new_in)):
-                if ord(answers_new_in[i]) < 1040 or ord(answers_new_in[i]) > 1103:
-                        print('Вводите пожалуйста буквы русского алфавита.')
-                        break
-
-                else:
-                    answers_new = answers_new_in
-
-
-
-            
-        while True:
-            res_new_in = input('Введите ответ.Число: ')
-
-            if res_new_in.isdigit():
-                res_new = res_new_in
-                break
-
-            else:
-                print('Введите пожалуйста число')
-                continue         
-           
-            
-        Quest_new = Question(answers_new, res_new)
-        questions.append(Quest_new)
-        continue
+QuestionsStorage.appendQuestions()
         
-    else:
-        break
 #-------------------------------------#
 
 #--- Вывод вопроса---###
 
+QuestionsStorage.removeQuestion()
 
-while True:
-    user_question_new = input('Вы хотите убрать  вопрос? Да/Нет\n')
-    if user_question_new.upper() == 'ДА':
-
-        for n in range(len(questions)):
-            print('Вопрос номмер:', n + 1, questions[n].text)
-
-        while True:
-            
-            question_delet_in = input('Какой вопрос вопрос вы бы хотели убрать? Номер:')
-            if question_delet_in.isdigit():
-                question_delet = int(question_delet_in) - 1
-                del questions[question_delet]
-                break
-
-            else:
-                print('Введите пожалуйста число')
-                continue         
-
-    else:
-        break
-
-                           
 # --------------------------------------------------------------------------
             
 
