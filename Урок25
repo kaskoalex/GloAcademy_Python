@@ -1,0 +1,18 @@
+from pyowm import OWM
+from pyowm.utils import config
+from pyowm.utils.config import get_default_config
+from pyowm.utils import timestamps
+
+config_dict = get_default_config()
+config_dict['language'] = 'ru'  
+owm = OWM('your-api-key', config_dict)
+
+owm = OWM('7af266ee3497e319d885e08eef2d2c34')
+mgr = owm.weather_manager()
+
+observation = mgr.weather_at_place('Moscow')
+w = observation.weather
+temp = w.temperature('celsius')
+
+
+print('Сегодня в Москве ', w.detailed_status, ', влажность', w.humidity, '%, температура ', temp['temp'], ' градусов ,максимальная температура ', temp['temp_max'], ' градусов,минимальная температура ', temp['temp_min'], ' градусов.')
